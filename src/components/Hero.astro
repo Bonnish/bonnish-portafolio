@@ -121,8 +121,9 @@ me.create_value()`;
       } else {
         clearInterval(interval);
       }
-    }, 45); // Typing speed
+    }, 45);
   };
+
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
       setTimeout(typeCode, 500);
