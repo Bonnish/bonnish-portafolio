@@ -1,0 +1,25 @@
+---
+---
+<div id="custom-cursor-glow" class="fixed top-0 left-0 w-[400px] h-[400px] pointer-events-none z-0 opacity-0 transition-opacity duration-500 mix-blend-screen hidden md:block" style="transform: translate(-50%, -50%);">
+  <div class="absolute inset-0 bg-purple-600 rounded-full blur-[100px] opacity-20"></div>
+</div>
+
+<script>
+  const cursor = document.getElementById('custom-cursor-glow');
+  
+  // Only activate on devices with a fine pointer (mouse)
+  if (window.matchMedia("(pointer: fine)").matches) {
+    document.addEventListener('mousemove', (e) => {
+      if (cursor) {
+        cursor.style.opacity = '1';
+        // Follow the mouse smoothly without transition on transform to avoid lag
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      if (cursor) cursor.style.opacity = '0';
+    });
+  }
+</script>

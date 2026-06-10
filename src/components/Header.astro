@@ -1,0 +1,33 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Helper for brand link depending on language
+const getHref = (targetLang) => {
+  return targetLang === 'es' ? '/' : '/en/';
+};
+---
+
+<header class="fixed w-full top-0 z-50 glass transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href={getHref(lang)} class="text-xl font-bold tracking-tighter text-white">
+      Bonnish<span class="text-gradient">.Dev</span>
+    </a>
+    <nav class="hidden md:flex gap-8 items-center">
+      <a href="#about" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">{t('nav.about')}</a>
+      <a href="#projects" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">{t('nav.projects')}</a>
+      <a href="#contact" class="text-slate-300 hover:text-white transition-colors text-sm font-medium">{t('nav.contact')}</a>
+      <div class="w-px h-4 bg-white/20 mx-2"></div>
+      <div class="flex gap-2 text-sm font-bold">
+        <a href="/" class={`transition-colors ${lang === 'es' ? 'text-white' : 'text-slate-500 hover:text-slate-300'}`}>ES</a>
+        <span class="text-slate-600">/</span>
+        <a href="/en/" class={`transition-colors ${lang === 'en' ? 'text-white' : 'text-slate-500 hover:text-slate-300'}`}>EN</a>
+      </div>
+    </nav>
+    <a href="#contact" class="px-5 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-sm font-medium transition-all hover:scale-105">
+      Hablemos
+    </a>
+  </div>
+</header>

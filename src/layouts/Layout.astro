@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import Cursor from '../components/Cursor.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{t('meta.title')}</title>
+		<meta name="description" content={t('meta.desc')} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-[#0f1115] text-slate-200 font-['Outfit'] min-h-screen selection:bg-purple-500/30 selection:text-white">
+		<Cursor />
+		<slot />
+		<script>
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: "0px 0px -50px 0px"
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, observerOptions);
+
+			document.querySelectorAll('.reveal').forEach((el) => {
+				observer.observe(el);
+			});
+		</script>
+	</body>
+</html>

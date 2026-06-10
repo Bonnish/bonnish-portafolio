@@ -1,0 +1,48 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const experiences = [
+  {
+    title: t('exp.cali.title'),
+    date: t('exp.cali.date'),
+    description: t('exp.cali.desc'),
+  },
+  {
+    title: t('exp.bonnish.title'),
+    date: t('exp.bonnish.date'),
+    description: t('exp.bonnish.desc'),
+  }
+];
+---
+
+<section id="experience" class="py-32 relative">
+  <div class="max-w-4xl mx-auto px-6 relative z-10">
+    <div class="mb-16 md:mb-24 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
+      <div>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">{t('exp.title')} <span class="text-gradient">{t('exp.subtitle')}</span></h2>
+      </div>
+    </div>
+
+    <div class="relative border-l border-white/10 ml-3 md:ml-6">
+      {experiences.map((exp, index) => (
+        <div class={`mb-12 relative pl-8 md:pl-12 group reveal reveal-delay-${(index % 3 + 1) * 100}`}>
+          <div class="absolute left-[-5px] top-8 w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.8)] group-hover:scale-150 group-hover:bg-orange-400 transition-all z-20"></div>
+          
+          <div class="glass-card p-6 md:p-8 rounded-2xl relative overflow-hidden">
+             <div class="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+             <div class="relative z-10">
+                <span class="inline-block px-3 py-1 mb-4 rounded-full bg-orange-500/10 border border-orange-500/20 text-xs font-bold text-orange-400 tracking-wider uppercase">{exp.date}</span>
+                <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">{exp.title}</h3>
+                <p class="text-slate-400 leading-relaxed text-lg">
+                  {exp.description}
+                </p>
+             </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

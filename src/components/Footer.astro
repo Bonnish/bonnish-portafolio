@@ -1,0 +1,37 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<footer id="contact" class="border-t border-white/5 bg-[#0a0c10] relative overflow-hidden pt-24 pb-12">
+  <div class="blob bg-purple-600/10 w-[600px] h-[600px] bottom-0 left-1/2 -translate-x-1/2"></div>
+  
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">{t('footer.title')}</h2>
+      <p class="text-slate-400 max-w-xl mx-auto text-lg">{t('footer.desc')}</p>
+    </div>
+
+    <div class="max-w-2xl mx-auto mb-20 reveal reveal-delay-100">
+      <form action="https://formspree.io/f/TU_CLAVE_AQUI" method="POST" class="flex flex-col gap-4">
+        <div class="flex flex-col md:flex-row gap-4">
+          <input type="text" name="name" placeholder={t('form.name')} required class="w-full bg-[#0f1115] border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all" />
+          <input type="email" name="email" placeholder={t('form.email')} required class="w-full bg-[#0f1115] border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-slate-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all" />
+        </div>
+        <textarea name="message" placeholder={t('form.message')} required rows="5" class="w-full bg-[#0f1115] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all resize-none"></textarea>
+        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-orange-500 text-white font-bold text-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98]">
+          {t('form.submit')}
+        </button>
+      </form>
+    </div>
+    
+    <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-slate-500 text-sm reveal reveal-delay-200">
+      <p>&copy; {new Date().getFullYear()} Marco Ignacio Gajardo Jimenez. {t('footer.rights')}</p>
+      <div class="flex gap-6 mt-4 md:mt-0 font-medium">
+        <a href="https://github.com/Bonnish" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/marco-gajardo-jimenez-41bb80408/" class="hover:text-white transition-colors">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
