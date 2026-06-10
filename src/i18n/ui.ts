@@ -7,7 +7,7 @@ export const defaultLang = 'es';
 
 export const ui = {
   es: {
-    'meta.title': 'Marco Ignacio Gajardo Jimenez - Full Stack Developer',
+    'meta.title': 'Bonnish Dev - Desarrollador Full Stack',
     'meta.desc': 'Portafolio de Marco Ignacio Gajardo Jimenez, Full Stack Developer.',
     'nav.about': 'Sobre Mí',
     'nav.projects': 'Proyectos',
@@ -50,7 +50,7 @@ export const ui = {
     'footer.rights': 'Todos los derechos reservados.'
   },
   en: {
-    'meta.title': 'Marco Ignacio Gajardo Jimenez - Full Stack Developer',
+    'meta.title': 'Bonnish Dev - Full Stack Developer',
     'meta.desc': 'Portfolio of Marco Ignacio Gajardo Jimenez, Full Stack Developer.',
     'nav.about': 'About Me',
     'nav.projects': 'Projects',
