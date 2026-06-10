@@ -6,15 +6,13 @@ const t = useTranslations(lang);
 ---
 
 <section id="about" class="min-h-screen flex items-center justify-center pt-28 pb-10 relative overflow-hidden">
-  <!-- Decorative background elements -->
-  <div class="blob bg-purple-600/30 w-[500px] h-[500px] top-0 -left-40"></div>
+    <div class="blob bg-purple-600/30 w-[500px] h-[500px] top-0 -left-40"></div>
   <div class="blob bg-orange-500/20 w-[400px] h-[400px] bottom-10 -right-20" style="animation-delay: -5s;"></div>
 
   <div class="max-w-7xl mx-auto px-6 z-10 relative w-full">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       
-      <!-- Left Column: Text -->
-      <div class="text-center lg:text-left">
+            <div class="text-center lg:text-left">
         <div class="inline-block mb-6 px-4 py-1.5 rounded-full border border-white/10 glass text-sm text-slate-300 font-medium reveal">
           <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse shadow-[0_0_10px_rgba(52,211,153,0.8)]"></span>
           {t('hero.badge')}
@@ -53,18 +51,15 @@ const t = useTranslations(lang);
         </div>
       </div>
 
-      <!-- Right Column: Code Typer -->
-      <div class="hidden lg:block reveal reveal-delay-200 perspective-1000">
+            <div class="hidden lg:block reveal reveal-delay-200 perspective-1000">
         <div class="glass-card rounded-xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform rotate-y-[-5deg] rotate-x-[5deg] hover:rotate-0 transition-transform duration-700 relative">
-          <!-- Window Header -->
-          <div class="bg-black/40 px-4 py-3 flex items-center gap-2 border-b border-white/5">
+                    <div class="bg-black/40 px-4 py-3 flex items-center gap-2 border-b border-white/5">
             <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
             <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
             <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
             <span class="ml-4 text-xs font-mono text-slate-500">developer.py</span>
           </div>
-          <!-- Code Content -->
-          <div class="p-6 font-mono text-sm md:text-base leading-relaxed overflow-x-auto min-h-[300px]">
+                    <div class="p-6 font-mono text-sm md:text-base leading-relaxed overflow-x-auto min-h-[300px]">
             <div id="code-typer" class="text-slate-300 whitespace-pre"></div>
           </div>
         </div>
@@ -90,8 +85,6 @@ me.create_value()`;
   const typeCode = () => {
     const el = document.getElementById('code-typer');
     if (!el) return;
-    
-    // Safe syntax highlighting using token replacement
     const highlight = (text) => {
       let html = text
         .replace(/class /g, '%%CLASS%%')
@@ -102,12 +95,8 @@ me.create_value()`;
         .replace(/__init__/g, '%%INIT%%')
         .replace(/create_value/g, '%%CREATE%%')
         .replace(/SoftwareEngineer/g, '%%SE%%');
-
-      // Strings and brackets
       html = html.replace(/(".*?")/g, "<span class='text-green-400'>$1</span>");
       html = html.replace(/(\[.*?\])/g, "<span class='text-yellow-300'>$1</span>");
-
-      // Restore tokens with actual HTML
       html = html
         .replace(/%%CLASS%%/g, "<span class='text-purple-400'>class </span>")
         .replace(/%%DEF%%/g, "<span class='text-purple-400'>def </span>")
@@ -134,8 +123,6 @@ me.create_value()`;
       }
     }, 45); // Typing speed
   };
-
-  // Run the animation when in view
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
       setTimeout(typeCode, 500);
